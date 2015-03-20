@@ -10,9 +10,9 @@ require "language_pack/version"
 # base Ruby Language Pack. This is for any base ruby app.
 class LanguagePack::Ruby < LanguagePack::Base
   NAME                 = "ruby"
-  LIBYAML_VERSION      = "0.1.5"
+  LIBYAML_VERSION      = "0.1.6"
   LIBYAML_PATH         = "libyaml-#{LIBYAML_VERSION}"
-  BUNDLER_VERSION      = "1.5.2"
+  BUNDLER_VERSION      = "1.7.12"
   BUNDLER_GEM_PATH     = "bundler-#{BUNDLER_VERSION}"
   NODE_VERSION         = "0.4.7"
   NODE_JS_BINARY_PATH  = "node-#{NODE_VERSION}"
@@ -96,7 +96,7 @@ class LanguagePack::Ruby < LanguagePack::Base
         create_database_yml
         install_binaries
         run_assets_precompile_rake_task
-        run_refinery_static_page_rake_task
+        #run_refinery_static_page_rake_task
       end
       super
     end
@@ -297,11 +297,11 @@ ERROR_MSG
             FileUtils.rm(file)
             FileUtils.rm(sha_file)
           else
-            if ruby_version.version == "ruby-2.1.3"
-              @fetchers[:buildpack].fetch_untar("#{ruby_version.version}.tgz", :prefix_node=>LanguagePack::Base::DEFAULT_LEGACY_STACK)
-            else
-              @fetchers[:buildpack].fetch_untar("#{ruby_version.version}.tgz")
-            end
+            #if ruby_version.version == "ruby-2.1.3"
+            @fetchers[:buildpack].fetch_untar("#{ruby_version.version}.tgz", :prefix_node=>LanguagePack::Base::DEFAULT_LEGACY_STACK)
+            #else
+              #@fetchers[:buildpack].fetch_untar("#{ruby_version.version}.tgz")
+            #end
           end
         end
       end
