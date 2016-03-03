@@ -69,6 +69,8 @@ private
 
         topic("Preparing app for Rails asset pipeline")
 
+        puts "Loading assets from saved cache"
+
         FileUtils.mkdir_p('public')
         cache.load "public/assets"
 
